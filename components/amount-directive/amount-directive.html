@@ -1,0 +1,41 @@
+<button class="add-btn"
+  ng-disabled="amount.isAdded()"
+  ng-click="amount.add()">Add record</button>
+
+<div class="title" ng-transclude></div>
+
+<div class="list">
+  <div ng-repeat="v in values">
+    <div class="input-unit"
+      ng-if="amount.isEdited($index)">
+
+      <input class="input"
+        ng-model="v[amount.property]"
+        ng-keydown="$event.keyCode === 27 && amount.cancel()" />
+
+      <div class="save-unit">
+        <button class="save-btn"
+          ng-disabled="!amount.isCorrect()"
+          ng-click="amount.save()">Save</button>
+      </div>
+    </div>
+
+    <div class="value-unit"
+      ng-if="!amount.isEdited($index)"
+      ng-click="amount.edit($index)"
+      ng-init="removeUnitOn = false"
+      ng-mouseover="removeUnitOn = true"
+      ng-mouseleave="removeUnitOn = false">{{v[amount.property]|dsep}}
+
+      <div class="remove-unit"
+        ng-if="removeUnitOn">
+
+        <a href="" ng-click="amount.remove($index)">Remove</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="total">
+  Total: <span class="total-value">{{amount.total|dsep}}</span>
+</div>

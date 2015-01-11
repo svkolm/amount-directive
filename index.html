@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+  <title>Amount Directive</title>
+  <meta charset="utf-8" />
+  <meta name="description" content="Demo of Amount Directive" />
+
+  <link rel="stylesheet" href="components/amount-directive/amount-directive.css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+
+  <script src="components/amount-service.js"></script>
+  <script src="components/element-fixator-service.js"></script>
+  <script src="components/digit-separator-filter.js"></script>
+
+  <script src="components/amount-directive/amount-directive.js"></script>
+
+  <script src="app.js"></script>
+</head>
+
+<body>
+  <div ng-controller="amountCtrl">
+    <amount values="amounts" property="val">Amount, $</amount>
+  </div>
+</body>
+</html>
